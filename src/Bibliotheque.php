@@ -68,4 +68,16 @@ class Bibliotheque
         }
         return $resultats;
     }
+
+    public function statistiques(): array
+    {
+        $total = count($this->livres);
+        $dispo = count(array_filter($this->livres, fn($l) => $l->estDisponible()));
+        return [
+            'total'       => $total,
+            'disponibles' => $dispo,
+            'empruntes'   => $total - $dispo,
+            'taux_dispo'  => $total > 0 ? round($dispo / $total * 100, 1) : 0.0,
+        ];
+    }
 }
