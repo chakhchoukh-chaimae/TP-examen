@@ -59,6 +59,6 @@ $bib->ajouter($l4);
 $res4 = $bib->rechercher('algo');
 verifier(count($res4) === 2, 'rechercher("algo") trouve 2 livres');
 
-$s = $biblio->statistiques();
+$s = $bib->statistiques();
 assert($s['total'] === count($biblio->getLivres()));
 assert($s['taux_dispo'] >= 0 && $s['taux_dispo'] <= 100);
